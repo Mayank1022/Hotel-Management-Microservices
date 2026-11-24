@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postregsql://localhost:3306/hotel_management_service
+    username: postgres
+    password: mayank123
+   
+    
+    
