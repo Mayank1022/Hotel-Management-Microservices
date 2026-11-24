@@ -9,5 +9,6 @@ public class HotelDto
    private String address;
    private String city;
    private Float rating;
+   private Integer postalCode;
    private Boolean isAvailable;
 }

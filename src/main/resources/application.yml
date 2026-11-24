@@ -1,8 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postregsql://localhost:3306/hotel_management_service
+    url: jdbc:postregsql://localhost:5432/hotel_management_service
     username: postgres
     password: mayank123
-   
-    
-    
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
