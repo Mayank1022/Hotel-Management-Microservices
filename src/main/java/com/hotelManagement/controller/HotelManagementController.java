@@ -1,6 +1,12 @@
 package com.hotelManagement.controller;
 
+
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,12 +21,30 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/hotel")
 @RequiredArgsConstructor
-public class HotelManagementController {
+public class HotelManagementController 
+{
 
 	private final HotelService hotelService;
-
-	@PostMapping("/create")
-	public ResponseEntity<Hotel> createHotel(@RequestBody HotelDto hotelDto) {
-		return ResponseEntity.ok(hotelService.create(hotelDto));
+	
+	@PostMapping("/addNew")
+	public ResponseEntity<?> addNew(@RequestBody HotelDto hotelDto)
+	{   
+		Hotel hotel = hotelService.create(hotelDto);
+		return ResponseEntity.status(HttpStatus.CREATED).body(hotel);
 	}
+	
+	@GetMapping("/getAll")
+	public ResponseEntity<List<Hotel>> getAll()
+	{
+		return ResponseEntity.ok(hotelService.getAll());
+	}
+	
+	@GetMapping("/getById/{id}")
+	public ResponseEntity<Hotel> getById(@PathVariable("id") Long id)
+	{
+		Hotel hotel = hotelService.getById(id);	
+		return ResponseEntity.ok(hotel);	
+	}
+	
+		
 }
