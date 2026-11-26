@@ -1,5 +1,12 @@
 package com.hotelRating.service;
 
-public interface RatingService {
+import com.hotelRating.entity.Rating;
 
+public interface RatingService 
+{
+    
+   void addRating(Rating rating);
+   
+   Rating findByHotelId(Long hoteId);
+    
 }
